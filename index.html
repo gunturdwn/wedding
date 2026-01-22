@@ -11,8 +11,8 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+  <!-- Google Fonts - Wedding Romantic Theme -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <!-- Tailwind Config -->
   <script>
@@ -26,7 +26,9 @@
           },
           fontFamily: {
             heading: ['Playfair Display', 'serif'],
-            body: ['Poppins', 'sans-serif']
+            elegant: ['Cormorant Garamond', 'serif'],
+            script: ['Dancing Script', 'cursive'],
+            body: ['Lora', 'serif']
           }
         }
       }
@@ -283,6 +285,89 @@
       transform: scale(1.08);
       box-shadow: 0 6px 15px rgba(255, 107, 157, 0.4);
     }
+
+    /* ========== VINYL RECORD ANIMATION ========== */
+    .vinyl-record {
+      width: 20px;
+      height: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .vinyl-disc {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      position: relative;
+      animation: spinVinyl 3s linear infinite;
+    }
+
+    .vinyl-record.paused .vinyl-disc {
+      animation: none;
+    }
+
+    @keyframes spinVinyl {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .vinyl-groove {
+      position: absolute;
+      border: 2px solid rgba(255, 107, 157, 0.6);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .vinyl-groove:nth-child(1) {
+      width: 100%;
+      height: 100%;
+    }
+
+    .vinyl-groove:nth-child(2) {
+      width: 80%;
+      height: 80%;
+    }
+
+    .vinyl-groove:nth-child(3) {
+      width: 60%;
+      height: 60%;
+    }
+
+    .vinyl-groove:nth-child(4) {
+      width: 40%;
+      height: 40%;
+    }
+
+    .vinyl-center {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: radial-gradient(circle at 40% 40%, #ff6b9d, #d84a7a);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      box-shadow: 0 0 4px rgba(255, 107, 157, 0.8);
+    }
+
+    .vinyl-shine {
+      display: none;
+    }
+
+    #musicIndicator {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+
+    #musicIndicator.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
     .fade-in {
       opacity: 0;
       transform: translateY(25px);
@@ -852,6 +937,38 @@
       50% { transform: translate(50px, 50px); }
     }
 
+    /* ========== ELEGANT TYPOGRAPHY ENHANCEMENTS ========== */
+    h1, h2, h3 {
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .font-elegant {
+      font-feature-settings: 'lnum' 1;
+      text-rendering: optimizeLegibility;
+    }
+
+    .font-script {
+      font-weight: 500;
+      font-style: italic;
+    }
+
+    .font-lora {
+      line-height: 1.6;
+    }
+
+    /* Special styling for romantic text */
+    blockquote {
+      font-style: italic;
+      border-left: 4px solid #ff6b9d;
+      padding-left: 1rem;
+    }
+
+    p.font-lora {
+      color: #e5e7eb;
+      letter-spacing: 0.3px;
+    }
+
     /* ========== ROMANTIC LOADING ANIMATION ========== */
     .loading-modal {
       position: fixed;
@@ -1064,13 +1181,13 @@
     <div class="absolute top-1/3 right-1/4 ornament ornament-ring"></div>
     <div class="text-center max-w-md mx-auto w-full relative z-10">
       <i class="fas fa-heart heart text-3xl mb-4 inline-block"></i>
-      <h1 class="text-3xl md:text-5xl font-bold font-heading text-white mb-4">Luftansha & Guntur</h1>
+      <h1 class="text-4xl md:text-6xl font-bold font-elegant text-white mb-4" style="letter-spacing: 2px;">Luftansha & Guntur</h1>
       <div class="enhanced-divider mb-6"></div>
       <p class="text-lg text-gray-200">Together with their families</p>
 
       <div class="mt-10 floating">
             <!-- Kata Bijak Pernikahan -->
-        <blockquote class="text-lg md:text-xl italic text-gray-200 mb-8 border-l-4 border-pink-500 pl-4">
+        <blockquote class="text-lg md:text-xl italic text-gray-200 mb-8 border-l-4 border-pink-500 pl-4 font-script" style="font-size: 1.2rem; letter-spacing: 0.5px;">
           “Pernikahan bukanlah akhir dari cinta, tapi awal dari komitmen yang tulus.”
         </blockquote>
       </div>
@@ -1089,9 +1206,9 @@
 
   <div class="container mx-auto relative z-10 px-4 max-w-4xl">
     <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-heading text-white mb-4">Bride & Groom</h2>
+      <h2 class="text-4xl md:text-5xl font-bold font-elegant text-white mb-4" style="letter-spacing: 1px;">Bride & Groom</h2>
       <div class="enhanced-divider w-1/3 mx-auto"></div>
-      <p class="text-gray-300 mt-6 italic text-sm md:text-base">
+      <p class="text-gray-300 mt-6 italic text-sm md:text-base font-lora">
         “Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri,
         agar kamu merasa tenteram kepadanya.” — QS. Ar-Rum: 21
       </p>
@@ -1105,8 +1222,8 @@
           <img src="luftansha.jpeg" alt="Luftansha Febia Nanda" class="w-40 h-40 object-cover rounded-full border-4 border-pink-400 shadow-lg">
           <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-transparent via-pink-400 to-transparent rounded-full"></div>
         </div>
-        <h3 class="text-xl font-bold text-white mb-2">Luftansha Febia Nanda</h3>
-        <p class="text-pink-300 font-medium mb-3">The Bride</p>
+        <h3 class="text-xl md:text-2xl font-bold font-elegant text-white mb-2" style="letter-spacing: 0.5px;">Luftansha Febia Nanda</h3>
+        <p class="text-pink-300 font-medium mb-3 font-script" style="font-size: 1.1rem;">The Bride</p>
         <p class="text-gray-300 text-sm">
           Putri dari<br>
           <span class="font-semibold">Bapak & Ibu</span>
@@ -1125,8 +1242,8 @@
           <img src="guntur.jpeg" alt="Guntur Darmawan" class="w-40 h-40 object-cover rounded-full border-4 border-blue-400 shadow-lg">
           <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent rounded-full"></div>
         </div>
-        <h3 class="text-xl font-bold text-white mb-2">Guntur Darmawan</h3>
-        <p class="text-blue-300 font-medium mb-3">The Groom</p>
+        <h3 class="text-xl md:text-2xl font-bold font-elegant text-white mb-2" style="letter-spacing: 0.5px;">Guntur Darmawan</h3>
+        <p class="text-blue-300 font-medium mb-3 font-script" style="font-size: 1.1rem;">The Groom</p>
         <p class="text-gray-300 text-sm">
           Putra dari<br>
           <span class="font-semibold">Bapak & Ibu</span>
@@ -1141,7 +1258,7 @@
   <div class="absolute inset-0 bg-black bg-opacity-70"></div>
   <div class="container mx-auto relative z-10">
     <div class="text-center mb-12">
-      <h2 class="text-3xl font-heading text-white mb-4 fade-in-up" style="opacity: 0;">The Big Day Is Coming</h2>
+      <h2 class="text-3xl md:text-4xl font-bold font-elegant text-white mb-4 fade-in-up" style="opacity: 0; letter-spacing: 1px;">The Big Day Is Coming</h2>
       <div class="enhanced-divider w-1/2 mx-auto fade-in-up" style="opacity: 0; animation-delay: 0.2s;"></div>
     </div>
     <div class="flex justify-center fade-in-up" style="opacity: 0; animation-delay: 0.3s;">
@@ -1173,7 +1290,7 @@
     <div class="absolute top-1/4 left-1/4 ornament ornament-heart" style="opacity: 0.15;"></div>
     <div class="container mx-auto max-w-md relative z-10">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-heading text-white mb-4 fade-in-up" style="opacity: 0;">Akad Nikah</h2>
+        <h2 class="text-3xl md:text-4xl font-bold font-elegant text-white mb-4 fade-in-up" style="opacity: 0; letter-spacing: 1px;">Akad Nikah</h2>
         <div class="enhanced-divider fade-in-up" style="opacity: 0; animation-delay: 0.2s;"></div>
       </div>
       <div class="ceremony-card fade-in card-hover-lift fade-in-up" style="opacity: 0; animation-delay: 0.3s;" data-delay="200">
@@ -1208,7 +1325,7 @@
     <div class="absolute bottom-1/3 right-1/3 ornament ornament-ring" style="opacity: 0.15;"></div>
     <div class="container mx-auto max-w-md relative z-10">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-heading text-white mb-4 fade-in-up" style="opacity: 0;">Resepsi Pernikahan</h2>
+        <h2 class="text-3xl md:text-4xl font-bold font-elegant text-white mb-4 fade-in-up" style="opacity: 0; letter-spacing: 1px;">Resepsi Pernikahan</h2>
         <div class="enhanced-divider fade-in-up" style="opacity: 0; animation-delay: 0.2s;"></div>
       </div>
       <div class="ceremony-card fade-in card-hover-lift fade-in-up" style="opacity: 0; animation-delay: 0.3s;" data-delay="300">
@@ -1243,7 +1360,7 @@
     <div class="absolute top-10 left-10 ornament ornament-flower" style="opacity: 0.12;"></div>
     <div class="container mx-auto max-w-md relative z-10">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-heading text-white mb-4 fade-in-up" style="opacity: 0;">Our Love Story</h2>
+        <h2 class="text-3xl md:text-4xl font-bold font-elegant text-white mb-4 fade-in-up" style="opacity: 0; letter-spacing: 1px;">Our Love Story</h2>
         <div class="enhanced-divider fade-in-up" style="opacity: 0; animation-delay: 0.2s;"></div>
       </div>
       <div class="bg-black bg-opacity-40 backdrop-blur-sm rounded-2xl p-6 fade-in card-hover-lift fade-in-up" style="opacity: 0; animation-delay: 0.3s;" data-delay="400">
@@ -1269,7 +1386,7 @@
 
       <!-- Romantic Milestones Timeline -->
       <div class="timeline-container fade-in-up" style="opacity: 0; animation-delay: 0.5s; margin-top: 60px;">
-        <h3 class="text-2xl font-heading text-white text-center mb-8">Our Beautiful Journey 💕</h3>
+        <h3 class="text-2xl md:text-3xl font-bold font-elegant text-white text-center mb-8" style="letter-spacing: 0.5px;">Our Beautiful Journey 💕</h3>
         <div class="timeline-line"></div>
         
         <div class="timeline-item">
@@ -1327,7 +1444,7 @@
     <div class="absolute bottom-1/4 right-1/4 ornament ornament-ring" style="opacity: 0.1;"></div>
     <div class="container mx-auto relative z-10">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-heading text-white mb-4 fade-in-up" style="opacity: 0;">Our Moments</h2>
+        <h2 class="text-3xl md:text-4xl font-bold font-elegant text-white mb-4 fade-in-up" style="opacity: 0; letter-spacing: 1px;">Our Moments</h2>
         <div class="enhanced-divider fade-in-up" style="opacity: 0; animation-delay: 0.2s;"></div>
       </div>
       <div class="gallery-grid">
@@ -1353,7 +1470,7 @@
     <div class="absolute top-5 right-5 ornament ornament-ring" style="opacity: 0.15;"></div>
     <div class="container mx-auto max-w-md relative z-10">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-heading text-white mb-4 fade-in-up" style="opacity: 0;">Wedding Gifts</h2>
+        <h2 class="text-3xl md:text-4xl font-bold font-elegant text-white mb-4 fade-in-up" style="opacity: 0; letter-spacing: 1px;">Wedding Gifts</h2>
         <div class="enhanced-divider fade-in-up" style="opacity: 0; animation-delay: 0.2s;"></div>
         <p class="text-gray-200 mt-6 text-sm fade-in-up" style="opacity: 0; animation-delay: 0.3s;">Your presence is the greatest gift, but if you wish to give something, we've created these options</p>
       </div>
@@ -1391,7 +1508,7 @@
   <div class="absolute bottom-1/3 right-1/3 ornament ornament-ring" style="opacity: 0.07;"></div>
   <div class="container mx-auto px-4 max-w-3xl relative z-10">
     <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-heading text-white mb-4">RSVP</h2>
+      <h2 class="text-4xl md:text-5xl font-bold font-elegant text-white mb-4" style="letter-spacing: 1px;">RSVP</h2>
       <div class="enhanced-divider"></div>
       <p class="text-xl text-gray-300 mt-6">Kindly respond by May 15, 2026</p>
       <p id="guestName" class="text-lg text-pink-300 mt-3"></p>
@@ -1449,7 +1566,7 @@
     <div class="absolute bottom-10 right-10 ornament ornament-flower" style="opacity: 0.12;"></div>
     <div class="container mx-auto max-w-md relative z-10">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-heading text-white mb-4 fade-in-up" style="opacity: 0;">Best Wishes</h2>
+        <h2 class="text-3xl md:text-4xl font-bold font-elegant text-white mb-4 fade-in-up" style="opacity: 0; letter-spacing: 1px;">Best Wishes</h2>
         <div class="enhanced-divider fade-in-up" style="opacity: 0; animation-delay: 0.2s;"></div>
         <p class="text-gray-200 mt-6 text-sm fade-in-up" style="opacity: 0; animation-delay: 0.3s;">Messages from our loved ones</p>
       </div>
@@ -1482,8 +1599,16 @@
 
 <!-- Music Indicator -->
 <div id="musicIndicator" class="music-indicator" title="Click to toggle music">
-  <i class="fas fa-volume-up"></i>
-  <span>Music On</span>
+  <div class="vinyl-record">
+    <div class="vinyl-disc">
+      <div class="vinyl-groove"></div>
+      <div class="vinyl-groove"></div>
+      <div class="vinyl-groove"></div>
+      <div class="vinyl-groove"></div>
+      <div class="vinyl-center"></div>
+      <div class="vinyl-shine"></div>
+    </div>
+  </div>
 </div>
 
 <!-- Particles.js -->
@@ -1533,12 +1658,13 @@
   // ================= MUSIC =================
   let isMusicPlaying = true;
   musicIndicator.addEventListener('click', () => {
+    const vinyl = musicIndicator.querySelector('.vinyl-record');
     if (isMusicPlaying) {
       weddingMusic.pause();
-      musicIndicator.innerHTML = '<i class="fas fa-volume-mute"></i><span>Music Off</span>';
+      vinyl.classList.add('paused');
     } else {
       weddingMusic.play();
-      musicIndicator.innerHTML = '<i class="fas fa-volume-up"></i><span>Music On</span>';
+      vinyl.classList.remove('paused');
     }
     isMusicPlaying = !isMusicPlaying;
   });
@@ -1579,6 +1705,7 @@
   // ================= OPEN INVITATION =================
   openInvitationBtn.addEventListener('click', () => {
     weddingMusic.play().catch(e => console.log("Autoplay prevented"));
+    musicIndicator.classList.add('show');
     heroOverlay.style.opacity = '0';
     heroOverlay.style.visibility = 'hidden';
     setTimeout(() => {
