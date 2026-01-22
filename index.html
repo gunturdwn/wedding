@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Luftansha & Guntur | Wedding Invitation</title>
 
   <!-- Tailwind CSS -->
@@ -41,6 +41,7 @@
     body {
       overscroll-behavior: none;
       -webkit-overflow-scrolling: touch;
+      overflow-x: hidden;
     }
     @keyframes float {
       0% { transform: translateY(0px); }
@@ -70,10 +71,16 @@
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 12px;
-      padding: 12px;
+      padding: 10px 8px;
       text-align: center;
-      min-width: 70px;
+      min-width: 60px;
       box-shadow: 0 4px 12px rgba(255, 107, 157, 0.2);
+    }
+    @media (min-width: 640px) {
+      .countdown-box {
+        padding: 12px;
+        min-width: 70px;
+      }
     }
     .signature {
       font-family: 'Dancing Script', cursive;
@@ -92,22 +99,30 @@
       align-items: center;
       z-index: 50;
       transition: opacity 0.8s ease, visibility 0.8s ease;
-      padding: 0 20px;
+      padding: 16px;
       background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
+      overflow-y: auto;
     }
     .open-btn {
       background: linear-gradient(135deg, #ff6b9d, #ff8ecb);
-      padding: 16px 45px;
-      font-size: 1.3rem;
+      padding: 14px 32px;
+      font-size: 1rem;
       font-weight: 600;
       border-radius: 50px;
       transition: all 0.3s ease;
       box-shadow: 0 10px 25px rgba(255, 107, 157, 0.5);
       position: relative;
       overflow: hidden;
-      min-width: 240px;
+      min-width: 200px;
       text-align: center;
       z-index: 2;
+    }
+    @media (min-width: 640px) {
+      .open-btn {
+        padding: 16px 45px;
+        font-size: 1.3rem;
+        min-width: 240px;
+      }
     }
     .open-btn:hover, .open-btn:active {
       transform: translateY(-4px);
@@ -139,21 +154,36 @@
       pointer-events: auto;
     }
     .section {
-      padding: 60px 20px;
+      padding: 40px 16px;
       position: relative;
       overflow: hidden;
+    }
+    @media (min-width: 640px) {
+      .section {
+        padding: 60px 20px;
+      }
     }
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+      gap: 8px;
+    }
+    @media (min-width: 768px) {
+      .gallery-grid {
+        gap: 12px;
+      }
     }
     .gallery-item {
-      height: 180px;
+      height: 140px;
       border-radius: 12px;
       overflow: hidden;
       position: relative;
       transition: transform 0.3s ease;
+    }
+    @media (min-width: 768px) {
+      .gallery-item {
+        height: 180px;
+      }
     }
     .gallery-item:hover, .gallery-item:active {
       transform: scale(1.03);
@@ -163,10 +193,15 @@
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 18px;
-      padding: 22px;
+      padding: 18px;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
       overflow: hidden;
+    }
+    @media (min-width: 640px) {
+      .gift-card, .wishes-card, .person-card, .ceremony-card {
+        padding: 22px;
+      }
     }
     .gift-card:hover, .gift-card:active,
     .wishes-card:hover, .wishes-card:active,
@@ -201,14 +236,20 @@
       margin-top: 40px;
     }
     .person-img {
-      width: 140px;
-      height: 140px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       object-fit: cover;
       border: 4px solid #ff6b9d;
       margin: 0 auto 15px;
       position: relative;
       box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+    }
+    @media (min-width: 768px) {
+      .person-img {
+        width: 140px;
+        height: 140px;
+      }
     }
     .person-img::after {
       content: '';
@@ -387,12 +428,565 @@
         opacity: 0;
       }
     }
+
+    /* ========== PARALLAX & ENHANCED ANIMATIONS ========== */
+    .parallax-bg {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .parallax-bg {
+        background-attachment: fixed;
+      }
+    }
+
+    /* Floating Elements Animation */
+    @keyframes floatSmooth {
+      0%, 100% { transform: translateY(0px) translateX(0px); }
+      25% { transform: translateY(-15px) translateX(5px); }
+      50% { transform: translateY(-30px) translateX(-5px); }
+      75% { transform: translateY(-15px) translateX(5px); }
+    }
+
+    .float-animation {
+      animation: floatSmooth 6s ease-in-out infinite;
+    }
+
+    /* Romantic Particle Animations */
+    @keyframes flyAround {
+      0% { transform: translateX(0) translateY(0) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateX(100vw) translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+
+    @keyframes floatDown {
+      0% { transform: translateY(-10px) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.8; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    @keyframes sway {
+      0%, 100% { transform: translateX(0px) rotate(0deg); }
+      25% { transform: translateX(10px) rotate(5deg); }
+      75% { transform: translateX(-10px) rotate(-5deg); }
+    }
+
+    .particle-bird {
+      position: fixed;
+      font-size: 24px;
+      animation: flyAround linear forwards;
+      pointer-events: none;
+      z-index: 5;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+
+    .particle-petal {
+      position: fixed;
+      animation: floatDown linear forwards;
+      pointer-events: none;
+      z-index: 3;
+      filter: blur(0.5px);
+    }
+
+    .particle-leaf {
+      position: fixed;
+      animation: sway linear forwards;
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0.7;
+    }
+
+    /* Section Enhancement */
+    .section-enhanced {
+      position: relative;
+      background-attachment: fixed;
+    }
+
+    .section-enhanced::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 107, 157, 0.5), transparent);
+      z-index: 10;
+    }
+
+    .section-enhanced::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 107, 157, 0.5), transparent);
+      z-index: 10;
+    }
+
+    /* Glow Effect on Scroll */
+    .glow-on-scroll {
+      box-shadow: 0 0 30px rgba(255, 107, 157, 0);
+      transition: box-shadow 0.6s ease;
+    }
+
+    .glow-on-scroll.active {
+      box-shadow: 0 0 30px rgba(255, 107, 157, 0.4);
+    }
+
+    /* Enhanced Text Effects */
+    .text-shimmer {
+      background: linear-gradient(90deg, #ffffff, #ff6b9d, #ffffff);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    /* Enhanced Card Hover */
+    .card-hover-lift {
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .card-hover-lift:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(255, 107, 157, 0.3);
+    }
+
+    /* Section Divider Enhancement */
+    .section-divider {
+      position: relative;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 40px 0;
+    }
+
+    .section-divider-line {
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255, 107, 157, 0.5), transparent);
+    }
+
+    .section-divider-ornament {
+      position: relative;
+      z-index: 2;
+      font-size: 24px;
+      animation: pulse 2s infinite;
+    }
+
+    /* Fade In Up Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    /* Staggered Animation Delay */
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    .stagger-4 { animation-delay: 0.4s; }
+    .stagger-5 { animation-delay: 0.5s; }
+
+    /* Mobile Parallax Disable */
+    @media (max-width: 768px) {
+      .parallax-bg {
+        background-attachment: scroll;
+      }
+    }
+
+    /* ========== INTERACTIVE HEARTS ========== */
+    .interactive-heart {
+      position: fixed;
+      pointer-events: none;
+      font-size: 2rem;
+      z-index: 60;
+      animation: heartFloat 2s ease-out forwards;
+      text-shadow: 0 0 10px rgba(255, 107, 157, 0.8);
+    }
+
+    @keyframes heartFloat {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(0);
+      }
+    }
+
+    /* ========== GLOWING ORNAMENTS ========== */
+    .ornament {
+      animation: ornamentGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes ornamentGlow {
+      0%, 100% {
+        opacity: 0.15;
+        filter: drop-shadow(0 0 5px rgba(255, 107, 157, 0.3));
+      }
+      50% {
+        opacity: 0.25;
+        filter: drop-shadow(0 0 15px rgba(255, 107, 157, 0.6)) drop-shadow(0 0 25px rgba(255, 107, 157, 0.3));
+      }
+    }
+
+    /* ========== TIMELINE MILESTONES ========== */
+    .timeline-container {
+      position: relative;
+      padding: 40px 0;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, transparent, #ff6b9d, transparent);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: timelineSlide 0.8s ease-out forwards;
+    }
+
+    .timeline-item:nth-child(1) { animation-delay: 0.2s; }
+    .timeline-item:nth-child(2) { animation-delay: 0.4s; }
+    .timeline-item:nth-child(3) { animation-delay: 0.6s; }
+    .timeline-item:nth-child(4) { animation-delay: 0.8s; }
+    .timeline-item:nth-child(5) { animation-delay: 1s; }
+
+    @keyframes timelineSlide {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .timeline-item:nth-child(odd) {
+      text-align: right;
+      padding-right: calc(50% + 30px);
+    }
+
+    .timeline-item:nth-child(even) {
+      text-align: left;
+      padding-left: calc(50% + 30px);
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      top: 10px;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      background: #ff6b9d;
+      border: 4px solid #1a1a1a;
+      border-radius: 50%;
+      z-index: 2;
+      animation: dotPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes dotPulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255, 107, 157, 0.7);
+      }
+      50% {
+        box-shadow: 0 0 0 8px rgba(255, 107, 157, 0);
+      }
+    }
+
+    .timeline-content {
+      background: rgba(255, 107, 157, 0.1);
+      padding: 20px;
+      border-radius: 12px;
+      border-left: 4px solid #ff6b9d;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .timeline-content:hover {
+      background: rgba(255, 107, 157, 0.15);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(255, 107, 157, 0.2);
+    }
+
+    .timeline-date {
+      font-weight: bold;
+      color: #ff6b9d;
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+
+    .timeline-title {
+      font-size: 1rem;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .timeline-description {
+      font-size: 0.9rem;
+      color: #b0b0b0;
+      line-height: 1.5;
+    }
+
+    /* ========== ROMANTIC LIGHT RAYS ========== */
+    .light-rays {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .light-ray {
+      position: absolute;
+      top: 0;
+      width: 100px;
+      height: 200%;
+      background: linear-gradient(180deg, rgba(255, 107, 157, 0.3) 0%, transparent 50%);
+      animation: rayFlow 8s ease-in-out infinite;
+      opacity: 0.3;
+    }
+
+    .light-ray:nth-child(1) {
+      left: 10%;
+      animation-delay: 0s;
+      width: 80px;
+    }
+
+    .light-ray:nth-child(2) {
+      left: 30%;
+      animation-delay: 1s;
+      width: 120px;
+    }
+
+    .light-ray:nth-child(3) {
+      left: 50%;
+      animation-delay: 2s;
+      width: 100px;
+    }
+
+    .light-ray:nth-child(4) {
+      left: 70%;
+      animation-delay: 1.5s;
+      width: 90px;
+    }
+
+    .light-ray:nth-child(5) {
+      left: 85%;
+      animation-delay: 2.5s;
+      width: 110px;
+    }
+
+    @keyframes rayFlow {
+      0%, 100% {
+        opacity: 0.1;
+        transform: translateY(-50px);
+      }
+      50% {
+        opacity: 0.4;
+        transform: translateY(50px);
+      }
+    }
+
+    /* ========== ENHANCED GLOW CARDS ========== */
+    .card-enhance-glow {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-enhance-glow::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 107, 157, 0.2) 0%, transparent 70%);
+      animation: cardGlowShift 4s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes cardGlowShift {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(50px, 50px); }
+    }
+
+    /* ========== ROMANTIC LOADING ANIMATION ========== */
+    .loading-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      backdrop-filter: blur(4px);
+    }
+
+    .loading-modal.active {
+      display: flex;
+      animation: fadeInLoading 0.3s ease;
+    }
+
+    @keyframes fadeInLoading {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .loading-container {
+      text-align: center;
+      background: rgba(26, 26, 26, 0.95);
+      padding: 40px;
+      border-radius: 20px;
+      border: 2px solid rgba(255, 107, 157, 0.3);
+      box-shadow: 0 10px 40px rgba(255, 107, 157, 0.3);
+      animation: popInLoading 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes popInLoading {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .romantic-spinner {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+    }
+
+    .heart-spinner {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      animation: spinHeart 2s linear infinite;
+    }
+
+    @keyframes spinHeart {
+      0% { transform: rotate(0deg); opacity: 0.3; }
+      50% { opacity: 1; }
+      100% { transform: rotate(360deg); opacity: 0.3; }
+    }
+
+    .heart-spinner::before {
+      content: '💕';
+      font-size: 48px;
+      display: block;
+      line-height: 80px;
+    }
+
+    .flower-spinner {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      animation: spinFlower 3s linear infinite reverse;
+    }
+
+    @keyframes spinFlower {
+      0% { transform: translate(-50%, -50%) rotate(0deg); opacity: 0.2; }
+      50% { opacity: 0.8; }
+      100% { transform: translate(-50%, -50%) rotate(360deg); opacity: 0.2; }
+    }
+
+    .flower-spinner::before {
+      content: '🌸';
+      font-size: 36px;
+      display: block;
+    }
+
+    .loading-text {
+      color: #ffb3d9;
+      font-size: 18px;
+      font-weight: 500;
+      margin-top: 20px;
+      letter-spacing: 2px;
+    }
+
+    .loading-dots {
+      display: inline-block;
+      margin-left: 4px;
+    }
+
+    .loading-dots::after {
+      content: '.';
+      animation: dots 1.5s steps(3, end) infinite;
+    }
+
+    @keyframes dots {
+      0%, 20% { content: '.'; }
+      40% { content: '..'; }
+      60%, 100% { content: '...'; }
+    }
+
+    .loading-message {
+      color: #ff6b9d;
+      font-size: 14px;
+      margin-top: 12px;
+      font-style: italic;
+    }
   </style>
 </head>
 <body class="bg-secondary text-accent font-body overflow-hidden">
 
 <!-- Particles Background -->
 <div id="particles-js"></div>
+
+<!-- Romantic Light Rays -->
+<div class="light-rays">
+  <div class="light-ray"></div>
+  <div class="light-ray"></div>
+  <div class="light-ray"></div>
+  <div class="light-ray"></div>
+  <div class="light-ray"></div>
+</div>
 
 <!-- Hero Overlay - Initial Screen -->
 <div id="heroOverlay" class="hero-overlay">
@@ -543,29 +1137,28 @@
 </div>
 
   <!-- Countdown Section (Baru) -->
-<div class="section bg-gradient-to-b from-gray-900 to-secondary relative overflow-hidden">
-  <div class="section-bg" style="background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80');"></div>
+<div class="section section-enhanced parallax-bg bg-gradient-to-b from-gray-900 to-secondary relative overflow-hidden" style="background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80');">
   <div class="absolute inset-0 bg-black bg-opacity-70"></div>
   <div class="container mx-auto relative z-10">
     <div class="text-center mb-12">
-      <h2 class="text-3xl font-heading text-white mb-4">The Big Day Is Coming</h2>
-      <div class="enhanced-divider w-1/2 mx-auto"></div>
+      <h2 class="text-3xl font-heading text-white mb-4 fade-in-up" style="opacity: 0;">The Big Day Is Coming</h2>
+      <div class="enhanced-divider w-1/2 mx-auto fade-in-up" style="opacity: 0; animation-delay: 0.2s;"></div>
     </div>
-    <div class="flex justify-center">
+    <div class="flex justify-center fade-in-up" style="opacity: 0; animation-delay: 0.3s;">
       <div class="grid grid-cols-4 gap-4 md:gap-6">
-        <div class="countdown-box">
+        <div class="countdown-box card-hover-lift">
           <div id="days" class="text-2xl md:text-3xl font-bold text-white">00</div>
           <div class="text-gray-200 mt-1 text-xs">Days</div>
         </div>
-        <div class="countdown-box">
+        <div class="countdown-box card-hover-lift">
           <div id="hours" class="text-2xl md:text-3xl font-bold text-white">00</div>
           <div class="text-gray-200 mt-1 text-xs">Hours</div>
         </div>
-        <div class="countdown-box">
+        <div class="countdown-box card-hover-lift">
           <div id="minutes" class="text-2xl md:text-3xl font-bold text-white">00</div>
           <div class="text-gray-200 mt-1 text-xs">Minutes</div>
         </div>
-        <div class="countdown-box">
+        <div class="countdown-box card-hover-lift">
           <div id="seconds" class="text-2xl md:text-3xl font-bold text-white">00</div>
           <div class="text-gray-200 mt-1 text-xs">Seconds</div>
         </div>
@@ -575,19 +1168,18 @@
 </div>
 
   <!-- Akad Nikah -->
-  <div class="section bg-gradient-to-b from-gray-900 to-secondary relative overflow-hidden">
-    <div class="section-bg" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80');"></div>
+  <div class="section section-enhanced parallax-bg bg-gradient-to-b from-gray-900 to-secondary relative overflow-hidden" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80');">
     <div class="absolute inset-0 bg-black bg-opacity-70"></div>
     <div class="absolute top-1/4 left-1/4 ornament ornament-heart" style="opacity: 0.15;"></div>
     <div class="container mx-auto max-w-md relative z-10">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-heading text-white mb-4">Akad Nikah</h2>
-        <div class="enhanced-divider"></div>
+        <h2 class="text-3xl font-heading text-white mb-4 fade-in-up" style="opacity: 0;">Akad Nikah</h2>
+        <div class="enhanced-divider fade-in-up" style="opacity: 0; animation-delay: 0.2s;"></div>
       </div>
-      <div class="ceremony-card fade-in" data-delay="200">
+      <div class="ceremony-card fade-in card-hover-lift fade-in-up" style="opacity: 0; animation-delay: 0.3s;" data-delay="200">
         <div class="card-glow"></div>
         <div class="flex flex-col items-center gap-6">
-          <div class="w-18 h-18 rounded-full bg-primary flex items-center justify-center">
+          <div class="w-18 h-18 rounded-full bg-primary flex items-center justify-center float-animation">
             <i class="fas fa-mosque text-white text-2xl"></i>
           </div>
           <h3 class="text-xl font-bold text-white text-center">Islamic Marriage Ceremony</h3>
@@ -611,19 +1203,18 @@
   </div>
 
   <!-- Resepsi Pernikahan -->
-  <div class="section bg-gradient-to-b from-secondary to-gray-900 relative overflow-hidden">
-    <div class="section-bg" style="background-image: url('https://images.unsplash.com/photo-1511285103902-4e4c2a8c7a4c?auto=format&fit=crop&w=1200&q=80');"></div>
+  <div class="section section-enhanced parallax-bg bg-gradient-to-b from-secondary to-gray-900 relative overflow-hidden" style="background-image: url('https://images.unsplash.com/photo-1511285103902-4e4c2a8c7a4c?auto=format&fit=crop&w=1200&q=80');">
     <div class="absolute inset-0 bg-black bg-opacity-70"></div>
     <div class="absolute bottom-1/3 right-1/3 ornament ornament-ring" style="opacity: 0.15;"></div>
     <div class="container mx-auto max-w-md relative z-10">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-heading text-white mb-4">Resepsi Pernikahan</h2>
-        <div class="enhanced-divider"></div>
+        <h2 class="text-3xl font-heading text-white mb-4 fade-in-up" style="opacity: 0;">Resepsi Pernikahan</h2>
+        <div class="enhanced-divider fade-in-up" style="opacity: 0; animation-delay: 0.2s;"></div>
       </div>
-      <div class="ceremony-card fade-in" data-delay="300">
+      <div class="ceremony-card fade-in card-hover-lift fade-in-up" style="opacity: 0; animation-delay: 0.3s;" data-delay="300">
         <div class="card-glow"></div>
         <div class="flex flex-col items-center gap-6">
-          <div class="w-18 h-18 rounded-full bg-primary flex items-center justify-center">
+          <div class="w-18 h-18 rounded-full bg-primary flex items-center justify-center float-animation" style="animation-delay: 0.2s;">
             <i class="fas fa-glass-whiskey text-white text-2xl"></i>
           </div>
           <h3 class="text-xl font-bold text-white text-center">Wedding Reception</h3>
@@ -647,18 +1238,17 @@
   </div>
 
   <!-- Our Story -->
-  <div class="section bg-gradient-to-b from-gray-900 to-secondary relative overflow-hidden">
-    <div class="section-bg" style="background-image: url('person.jpeg');"></div>
+  <div class="section section-enhanced parallax-bg bg-gradient-to-b from-gray-900 to-secondary relative overflow-hidden" style="background-image: url('person.jpeg');">
     <div class="absolute inset-0 bg-black bg-opacity-70"></div>
     <div class="absolute top-10 left-10 ornament ornament-flower" style="opacity: 0.12;"></div>
     <div class="container mx-auto max-w-md relative z-10">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-heading text-white mb-4">Our Love Story</h2>
-        <div class="enhanced-divider"></div>
+        <h2 class="text-3xl font-heading text-white mb-4 fade-in-up" style="opacity: 0;">Our Love Story</h2>
+        <div class="enhanced-divider fade-in-up" style="opacity: 0; animation-delay: 0.2s;"></div>
       </div>
-      <div class="bg-black bg-opacity-40 backdrop-blur-sm rounded-2xl p-6 fade-in" data-delay="400">
+      <div class="bg-black bg-opacity-40 backdrop-blur-sm rounded-2xl p-6 fade-in card-hover-lift fade-in-up" style="opacity: 0; animation-delay: 0.3s;" data-delay="400">
         <div class="flex flex-col items-center gap-6">
-          <div class="w-full rounded-xl overflow-hidden h-52">
+          <div class="w-full rounded-xl overflow-hidden h-52 float-animation">
             <img src="person.jpeg" alt="Couple" class="w-full h-full object-cover">
           </div>
           <div class="text-gray-200 text-sm space-y-3">
@@ -676,31 +1266,81 @@
           </div>
         </div>
       </div>
+
+      <!-- Romantic Milestones Timeline -->
+      <div class="timeline-container fade-in-up" style="opacity: 0; animation-delay: 0.5s; margin-top: 60px;">
+        <h3 class="text-2xl font-heading text-white text-center mb-8">Our Beautiful Journey 💕</h3>
+        <div class="timeline-line"></div>
+        
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2020</div>
+            <div class="timeline-title">Pertama Bertemu</div>
+            <div class="timeline-description">Pertemuan istimewa di kampus yang mengubah segalanya...</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2021</div>
+            <div class="timeline-title">Jatuh Cinta</div>
+            <div class="timeline-description">Perlahan memahami bahwa perasaan ini bukan sekadar persahabatan...</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2023</div>
+            <div class="timeline-title">Membangun Komitmen</div>
+            <div class="timeline-description">Memilih untuk terus bersama melalui segala situasi...</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2025</div>
+            <div class="timeline-title">Momen Istimewa</div>
+            <div class="timeline-description">Waktu yang dinanti-nantikan untuk mengucapkan "Saya siap"...</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2026</div>
+            <div class="timeline-title">Selamanya Bersama</div>
+            <div class="timeline-description">Hari yang akan kami ingat selamanya, dimulai dari sini...</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- Gallery -->
-  <div class="section bg-gradient-to-b from-secondary to-gray-900 relative overflow-hidden">
-    <div class="section-bg" style="background-image: url('https://images.unsplash.com/photo-1522252234503-e356532cafd5?auto=format&fit=crop&w=1200&q=80');"></div>
+  <div class="section section-enhanced parallax-bg bg-gradient-to-b from-secondary to-gray-900 relative overflow-hidden" style="background-image: url('https://images.unsplash.com/photo-1522252234503-e356532cafd5?auto=format&fit=crop&w=1200&q=80');">
     <div class="absolute inset-0 bg-black bg-opacity-70"></div>
     <div class="absolute top-1/4 left-1/4 ornament ornament-heart" style="opacity: 0.1;"></div>
     <div class="absolute bottom-1/4 right-1/4 ornament ornament-ring" style="opacity: 0.1;"></div>
     <div class="container mx-auto relative z-10">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-heading text-white mb-4">Our Moments</h2>
-        <div class="enhanced-divider"></div>
+        <h2 class="text-3xl font-heading text-white mb-4 fade-in-up" style="opacity: 0;">Our Moments</h2>
+        <div class="enhanced-divider fade-in-up" style="opacity: 0; animation-delay: 0.2s;"></div>
       </div>
       <div class="gallery-grid">
-        <div class="gallery-item fade-in" data-delay="100">
+        <div class="gallery-item fade-in card-hover-lift fade-in-up" style="opacity: 0;" data-delay="100">
           <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=600&q=80" alt="Couple" class="w-full h-full object-cover">
         </div>
-        <div class="gallery-item fade-in" data-delay="200">
+        <div class="gallery-item fade-in card-hover-lift fade-in-up" style="opacity: 0; animation-delay: 0.1s;" data-delay="200">
           <img src="https://images.unsplash.com/photo-1522252234503-e356532cafd5?auto=format&fit=crop&w=600&q=80" alt="Couple" class="w-full h-full object-cover">
         </div>
-        <div class="gallery-item fade-in" data-delay="300">
+        <div class="gallery-item fade-in card-hover-lift fade-in-up" style="opacity: 0; animation-delay: 0.2s;" data-delay="300">
           <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="Couple" class="w-full h-full object-cover">
         </div>
-        <div class="gallery-item fade-in" data-delay="400">
+        <div class="gallery-item fade-in card-hover-lift fade-in-up" style="opacity: 0; animation-delay: 0.3s;" data-delay="400">
           <img src="person.jpeg" alt="Couple" class="w-full h-full object-cover">
         </div>
       </div>
@@ -708,20 +1348,19 @@
   </div>
 
   <!-- Wedding Gifts -->
-  <div class="section bg-gradient-to-b from-gray-900 to-secondary relative overflow-hidden">
-    <div class="section-bg" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80');"></div>
+  <div class="section section-enhanced parallax-bg bg-gradient-to-b from-gray-900 to-secondary relative overflow-hidden" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80');">
     <div class="absolute inset-0 bg-black bg-opacity-70"></div>
     <div class="absolute top-5 right-5 ornament ornament-ring" style="opacity: 0.15;"></div>
     <div class="container mx-auto max-w-md relative z-10">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-heading text-white mb-4">Wedding Gifts</h2>
-        <div class="enhanced-divider"></div>
-        <p class="text-gray-200 mt-6 text-sm">Your presence is the greatest gift, but if you wish to give something, we've created these options</p>
+        <h2 class="text-3xl font-heading text-white mb-4 fade-in-up" style="opacity: 0;">Wedding Gifts</h2>
+        <div class="enhanced-divider fade-in-up" style="opacity: 0; animation-delay: 0.2s;"></div>
+        <p class="text-gray-200 mt-6 text-sm fade-in-up" style="opacity: 0; animation-delay: 0.3s;">Your presence is the greatest gift, but if you wish to give something, we've created these options</p>
       </div>
       <div class="space-y-6">
-        <div class="gift-card fade-in" data-delay="100">
+        <div class="gift-card fade-in card-hover-lift fade-in-up" style="opacity: 0; animation-delay: 0.4s;" data-delay="100">
           <div class="card-glow"></div>
-          <div class="w-14 h-14 rounded-full bg-primary flex items-center justify-center mx-auto mb-4">
+          <div class="w-14 h-14 rounded-full bg-primary flex items-center justify-center mx-auto mb-4 float-animation">
             <i class="fas fa-piggy-bank text-white text-xl"></i>
           </div>
           <h3 class="text-xl font-bold text-white mb-3 text-center">Bank Transfer</h3>
@@ -731,9 +1370,9 @@
             <p class="text-gray-200">a.n. Luftansha Febia Nanda</p>
           </div>
         </div>
-        <div class="gift-card fade-in" data-delay="200">
+        <div class="gift-card fade-in card-hover-lift fade-in-up" style="opacity: 0; animation-delay: 0.5s;" data-delay="200">
           <div class="card-glow"></div>
-          <div class="w-14 h-14 rounded-full bg-primary flex items-center justify-center mx-auto mb-4">
+          <div class="w-14 h-14 rounded-full bg-primary flex items-center justify-center mx-auto mb-4 float-animation" style="animation-delay: 0.2s;">
             <i class="fas fa-envelope text-white text-xl"></i>
           </div>
           <h3 class="text-xl font-bold text-white mb-3 text-center">Well Wishes</h3>
@@ -758,6 +1397,18 @@
       <p id="guestName" class="text-lg text-pink-300 mt-3"></p>
     </div>
     <div class="bg-black bg-opacity-30 backdrop-blur-sm rounded-2xl p-8 md:p-12">
+      <!-- Loading Modal -->
+      <div id="loadingModal" class="loading-modal">
+        <div class="loading-container">
+          <div class="romantic-spinner">
+            <div class="heart-spinner"></div>
+            <div class="flower-spinner"></div>
+          </div>
+          <div class="loading-text">Memproses RSVP Anda<span class="loading-dots"></span></div>
+          <div class="loading-message">✨ Tunggu ya✨</div>
+        </div>
+      </div>
+
       <form id="rsvpForm" class="space-y-6">
         <div>
           <label class="block text-lg text-gray-300 mb-2">Full Name</label>
@@ -793,14 +1444,14 @@
 </div>
 
   <!-- Best Wishes Section -->
-  <div class="section bg-gradient-to-b from-gray-900 to-secondary relative overflow-hidden">
+  <div class="section section-enhanced bg-gradient-to-b from-gray-900 to-secondary relative overflow-hidden">
     <div class="absolute inset-0 bg-black bg-opacity-70"></div>
     <div class="absolute bottom-10 right-10 ornament ornament-flower" style="opacity: 0.12;"></div>
     <div class="container mx-auto max-w-md relative z-10">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-heading text-white mb-4">Best Wishes</h2>
-        <div class="enhanced-divider"></div>
-        <p class="text-gray-200 mt-6 text-sm">Messages from our loved ones</p>
+        <h2 class="text-3xl font-heading text-white mb-4 fade-in-up" style="opacity: 0;">Best Wishes</h2>
+        <div class="enhanced-divider fade-in-up" style="opacity: 0; animation-delay: 0.2s;"></div>
+        <p class="text-gray-200 mt-6 text-sm fade-in-up" style="opacity: 0; animation-delay: 0.3s;">Messages from our loved ones</p>
       </div>
       <div id="wishesContainer" class="max-h-96 overflow-y-auto pr-2 space-y-5 custom-scrollbar">
         <!-- Wishes will be loaded here dynamically -->
@@ -864,9 +1515,11 @@
     }
 
     initParticles();
+    createFloatingPetals();
     updateCountdown();
     setInterval(updateCountdown, 1000);
     loadWishes(); // Load wishes from spreadsheet
+    setupInteractiveHearts(); // Add heart click effect
   };
 
   // ================= VIEWS =================
@@ -933,8 +1586,107 @@
       mainContent.classList.add('show-hero');
       document.body.classList.remove('overflow-hidden');
       createConfetti();
+      initParallax();
+      startRomanticParticles();
+      triggerAnimationsOnScroll();
     }, 800);
   });
+
+  // ================= PARALLAX EFFECT =================
+  function initParallax() {
+    const parallaxElements = document.querySelectorAll('.parallax-bg');
+    
+    if (window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+      window.addEventListener('scroll', () => {
+        parallaxElements.forEach(el => {
+          const scrollPosition = window.pageYOffset;
+          const elementOffset = el.offsetTop;
+          const distance = scrollPosition - elementOffset;
+          el.style.backgroundPosition = `center ${distance * 0.5}px`;
+        });
+      });
+    }
+  }
+
+  // ================= ROMANTIC PARTICLES =================
+  function startRomanticParticles() {
+    const romanticSymbols = ['🕊️', '💕', '🌸', '✨', '🌷', '💫'];
+    const interval = setInterval(() => {
+      const symbol = romanticSymbols[Math.floor(Math.random() * romanticSymbols.length)];
+      const particle = document.createElement('div');
+      
+      particle.className = 'particle-bird';
+      particle.textContent = symbol;
+      particle.style.left = Math.random() * window.innerWidth + 'px';
+      particle.style.top = Math.random() * window.innerHeight - 100 + 'px';
+      particle.style.animationDuration = (Math.random() * 8 + 12) + 's';
+      particle.style.fontSize = (Math.random() * 16 + 16) + 'px';
+      particle.style.opacity = Math.random() * 0.5 + 0.3;
+      
+      document.body.appendChild(particle);
+      
+      setTimeout(() => particle.remove(), (Math.random() * 8 + 12) * 1000);
+    }, 3000);
+  }
+
+  // ================= FLOATING PETALS =================
+  function createFloatingPetals() {
+    const petalColors = ['#ff6b9d', '#ff8ecb', '#ffffff', '#ffb3d9'];
+    const petalInterval = setInterval(() => {
+      if (document.hidden) return;
+      
+      const petal = document.createElement('div');
+      petal.className = 'particle-petal';
+      petal.style.left = Math.random() * window.innerWidth + 'px';
+      petal.style.top = '-20px';
+      petal.style.width = (Math.random() * 8 + 4) + 'px';
+      petal.style.height = petal.style.width;
+      petal.style.backgroundColor = petalColors[Math.floor(Math.random() * petalColors.length)];
+      petal.style.borderRadius = '50%';
+      petal.style.animationDuration = (Math.random() * 10 + 15) + 's';
+      petal.style.opacity = Math.random() * 0.6 + 0.3;
+      
+      document.body.appendChild(petal);
+      setTimeout(() => petal.remove(), (Math.random() * 10 + 15) * 1000);
+    }, 2000);
+  }
+
+  // ================= SCROLL ANIMATIONS =================
+  function triggerAnimationsOnScroll() {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -100px 0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Animate fade-in-up elements
+          if (entry.target.classList.contains('fade-in-up')) {
+            entry.target.style.opacity = '1';
+          }
+          
+          // Add glow effect to cards
+          if (entry.target.classList.contains('card-hover-lift')) {
+            entry.target.classList.add('glow-on-scroll', 'active');
+          }
+
+          // Animate text-shimmer
+          if (entry.target.classList.contains('text-shimmer')) {
+            entry.target.style.backgroundPosition = '0% center';
+          }
+
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all animated elements
+    document.querySelectorAll('.fade-in-up, .card-hover-lift, .text-shimmer').forEach(el => {
+      observer.observe(el);
+    });
+  }
 
   // ================= CONFETTI =================
   function createConfetti() {
@@ -1020,6 +1772,26 @@
     });
   }
 
+  // ================= INTERACTIVE HEARTS CLICK =================
+  function setupInteractiveHearts() {
+    document.addEventListener('click', (e) => {
+      // Jangan buat hati di atas tombol atau input
+      if (e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') {
+        return;
+      }
+
+      const heart = document.createElement('div');
+      heart.classList.add('interactive-heart');
+      heart.textContent = '💕';
+      heart.style.left = e.clientX + 'px';
+      heart.style.top = e.clientY + 'px';
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 2000);
+    });
+  }
+
   // ================= RSVP SUBMIT =================
   document.getElementById("rsvpForm")?.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -1036,15 +1808,25 @@
       catatan: document.getElementById("catatan").value
     };
 
+    // Show loading modal
+    const loadingModal = document.getElementById("loadingModal");
+    loadingModal.classList.add("active");
+
     try {
       await fetch(API_URL, {
         method: "POST",
         body: JSON.stringify(data)
       });
+      
+      // Delay closing for cute effect
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      loadingModal.classList.remove("active");
+      
       alert("Terima kasih! RSVP berhasil dikirim 💖");
       document.getElementById("jumlah").value = "";
       document.getElementById("catatan").value = "";
     } catch (err) {
+      loadingModal.classList.remove("active");
       alert("Gagal mengirim RSVP. Coba lagi nanti.");
     }
   });
